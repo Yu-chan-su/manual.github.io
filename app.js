@@ -275,10 +275,10 @@ function isMostlyInViewport(el) {
   const rect = el.getBoundingClientRect();
   const vh = window.innerHeight || document.documentElement.clientHeight || 0;
   if (!vh) return false;
-  // だいたい中央帯に入っていたら「見えている」扱い（observer の 0.2 相当）
-  const topEdge = vh * 0.15;
-  const bottomEdge = vh * 0.85;
-  return rect.bottom > topEdge && rect.top < bottomEdge;
+  // 「画面内に見えているか」を素直に判定（上部に張り付いた表示でも確実に隠す）
+  const sticky = document.querySelector(".sticky-head");
+  const topEdge = (sticky && "offsetHeight" in sticky ? sticky.offsetHeight : 0) + 8;
+  return rect.bottom > topEdge && rect.top < vh;
 }
 
 function updateJumpFirstYearVisibility() {
@@ -312,6 +312,18 @@ function initJumpFirstYear() {
     });
     io.observe(t);
   }
+  // IntersectionObserver が動かない/発火が遅い環境向けに、スクロール/リサイズでも再評価
+  let raf = 0;
+  const schedule = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      updateJumpFirstYearVisibility();
+    });
+  };
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule, { passive: true });
+
   // 初期状態も同期
   updateJumpFirstYearVisibility();
 }
