@@ -46,6 +46,10 @@
     <p class="empty-state" id="empty-state" hidden>マニュアルが登録されていません。</p>
   </main>
 
+  <button type="button" class="fab fab--warn" id="jump-firstyear" aria-label="一年生向けのカードへ移動">
+    一年生はこちら
+  </button>
+
   <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
   <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="drawer-title">
     <div class="drawer__header">
@@ -100,7 +104,14 @@
   <div class="gate" id="gate" hidden>
     <div class="gate__panel" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
       <h2 class="gate__title" id="gate-title">確認</h2>
-      <p class="gate__desc" id="gate-desc">あなたは1年目スタッフですか？</p>
+      <p class="gate__desc" id="gate-desc">外部ブラウザで開くと動作が安定します。</p>
+
+      <div class="gate__intro" id="gate-intro">
+        <p class="gate__hint">LINEなどのアプリ内ブラウザで開いている場合は、右下の三点リーダから「外部サイトで開く」を選んでください。</p>
+        <div class="gate__actions">
+          <button type="button" class="gate__btn gate__btn--primary" id="gate-intro-next">次へ（継続年数の確認）</button>
+        </div>
+      </div>
 
       <div class="gate__actions" id="gate-actions-ask">
         <button type="button" class="gate__btn gate__btn--primary" id="gate-yes">1年目</button>
@@ -109,7 +120,7 @@
 
       <div class="gate__notice" id="gate-notice" hidden>
         <p class="gate__notice-title">1年目の最初の確認</p>
-        <p class="gate__notice-text">受付に赤いはっぴが用意されているので、それを着て参加すること</p>
+        <p class="gate__notice-text">GIの部屋に用意されている赤いはっぴを着て集合すること</p>
         <div class="gate__actions">
           <button type="button" class="gate__btn gate__btn--primary" id="gate-continue">確認したので誘導声かけへ</button>
         </div>
