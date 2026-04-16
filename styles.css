@@ -122,6 +122,11 @@ body {
   flex-wrap: wrap;
 }
 
+.gate__actions[hidden],
+.gate__intro[hidden] {
+  display: none !important;
+}
+
 .gate__btn {
   flex: 1;
   min-width: 140px;
