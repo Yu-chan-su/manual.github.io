@@ -2,11 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    /*
+      GitHub Pages（/repo/ 配下）で末尾スラ無しURL（.../repo）で開くと、相対パスが /styles.css のように解決されて壊れることがあります。
+      そのため現在のパスから base を動的に設定します（file:// では何もしない）。
+    */
+    (function () {
+      if (location.protocol === "file:") return;
+      var path = location.pathname;
+      if (!path.endsWith("/")) path = path.replace(/[^/]*$/, "");
+      var base = document.createElement("base");
+      base.href = path;
+      document.head.appendChild(base);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#7fff00" />
   <meta name="description" content="自転車点検会（2026前期）スタッフ向けマニュアル" />
   <title>自転車点検会マニュアル</title>
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">本文へスキップ</a>
@@ -83,6 +97,26 @@
     </div>
   </aside>
 
-  <script src="../app.js"></script>
+  <div class="gate" id="gate" hidden>
+    <div class="gate__panel" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
+      <h2 class="gate__title" id="gate-title">確認</h2>
+      <p class="gate__desc" id="gate-desc">あなたは1年目スタッフですか？</p>
+
+      <div class="gate__actions" id="gate-actions-ask">
+        <button type="button" class="gate__btn gate__btn--primary" id="gate-yes">1年目</button>
+        <button type="button" class="gate__btn" id="gate-no">それ以外</button>
+      </div>
+
+      <div class="gate__notice" id="gate-notice" hidden>
+        <p class="gate__notice-title">1年目の最初の確認</p>
+        <p class="gate__notice-text">受付に赤いはっぴが用意されているので、それを着て参加すること</p>
+        <div class="gate__actions">
+          <button type="button" class="gate__btn gate__btn--primary" id="gate-continue">確認したので誘導声かけへ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js" defer></script>
 </body>
 </html>
