@@ -91,6 +91,16 @@ body {
   font-size: 0.9375rem;
 }
 
+.gate__hint {
+  margin: 0 0 14px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 40, 20, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+  color: rgba(26, 46, 20, 0.92);
+}
+
 .gate__notice-title {
   margin: 0 0 6px;
   font-weight: 800;
@@ -222,6 +232,35 @@ body {
 .btn-icon__text {
   font-weight: 800;
   font-size: 1.1rem;
+}
+
+.fab {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, calc(14px + env(safe-area-inset-bottom)));
+  z-index: 120;
+  min-height: 52px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 38, 38, 0.28);
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px rgba(30, 50, 25, 0.18);
+  cursor: pointer;
+}
+
+/* 明示用（HTML側でクラスを分けても破綻しない） */
+.fab--warn {}
+
+.fab:focus-visible {
+  outline: 2px solid #b91c1c;
+  outline-offset: 2px;
+}
+
+.fab[hidden] {
+  display: none !important;
 }
 
 .main {
