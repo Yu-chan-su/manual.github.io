@@ -65,16 +65,19 @@
       <p class="drawer__summary" id="drawer-summary"></p>
       <div class="drawer-tab-shell" id="drawer-tab-shell">
         <div class="drawer-tabs drawer-tabs--drawer" id="drawer-tab-bar" role="tablist" aria-label="ドロワー内の表示切替" hidden>
-          <button type="button" class="drawer-tab" id="drawer-tab-0" role="tab" aria-selected="true" aria-controls="drawer-tab-panel-0" data-tab="0">要点</button>
+          <button type="button" class="drawer-tab" id="drawer-tab-0" role="tab" aria-selected="true" aria-controls="drawer-tab-panel-0" data-tab="0">概要</button>
           <button type="button" class="drawer-tab" id="drawer-tab-1" role="tab" aria-selected="false" aria-controls="drawer-tab-panel-1" tabindex="-1" data-tab="1">詳細</button>
           <button type="button" class="drawer-tab" id="drawer-tab-2" role="tab" aria-selected="false" aria-controls="drawer-tab-panel-2" tabindex="-1" data-tab="2">台詞</button>
         </div>
         <div class="drawer-tab-panels" id="drawer-tab-panels">
           <div class="drawer-tab-panel is-active" id="drawer-tab-panel-0" role="tabpanel" aria-labelledby="drawer-tab-0" tabindex="0">
             <section class="drawer__section" id="drawer-steps-section" hidden>
-              <h3 class="drawer__section-title">要点</h3>
+              <h3 class="drawer__section-title">概要</h3>
               <div class="drawer__steps" id="drawer-steps"></div>
             </section>
+            <div class="drawer__extras drawer__extras--inline" id="drawer-inline-wrap" hidden>
+              <div class="drawer-inline-host" id="drawer-inline-host" hidden></div>
+            </div>
           </div>
           <div class="drawer-tab-panel" id="drawer-tab-panel-1" role="tabpanel" aria-labelledby="drawer-tab-1" tabindex="0">
             <section class="drawer__section" id="drawer-fields-section" hidden>
@@ -83,6 +86,9 @@
             </section>
             <section class="drawer__section" id="drawer-detail-section">
               <h3 class="drawer__section-title">詳細</h3>
+              <div class="drawer__extras drawer__extras--links" id="drawer-link-wrap" hidden>
+                <div class="drawer-links" id="drawer-links"></div>
+              </div>
               <div class="drawer__detail" id="drawer-detail"></div>
             </section>
           </div>
@@ -94,9 +100,6 @@
             </section>
           </div>
         </div>
-      </div>
-      <div class="drawer__extras" id="drawer-link-wrap" hidden>
-        <button type="button" class="btn-secondary" id="drawer-link-btn">参考資料を別タブで開く</button>
       </div>
     </div>
   </aside>
@@ -120,7 +123,7 @@
 
       <div class="gate__notice" id="gate-notice" hidden>
         <p class="gate__notice-title">1年目の最初の確認</p>
-        <p class="gate__notice-text">受付場所に用意されている赤いはっぴを着て集合すること</p>
+        <p class="gate__notice-text">GIの部屋に用意されている赤いはっぴを着て集合すること</p>
         <div class="gate__actions">
           <button type="button" class="gate__btn gate__btn--primary" id="gate-continue">確認したので誘導声かけへ</button>
         </div>
